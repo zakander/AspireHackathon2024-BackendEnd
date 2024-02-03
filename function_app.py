@@ -6,7 +6,6 @@ import logging
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 
 controller = Controller()
-
 with open('SampleData/SampleData.json', 'r') as f:
     data = json.load(f)
     print(data)
@@ -14,6 +13,8 @@ with open('SampleData/SampleData.json', 'r') as f:
 @app.route(route="RunPrediction")
 def RunPrediction(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
+
+    # This calls the LangChain agent executor, which prompts GPT to make predictions using sample data files
     for person in data:
         controller.AgentService.predict(person)
 

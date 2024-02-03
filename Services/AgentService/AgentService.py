@@ -10,6 +10,7 @@ from langchain_community.chat_models import ChatAnthropic
 
 class AgentService:
     def __init__(self) -> None:
+        # Set up agent executor
         tools = [PythonREPLTool()]
 
         instructions = """Run AI predictions on an agent.
@@ -22,7 +23,7 @@ class AgentService:
         self.agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True, handle_parsing_errors=True)
     
     def predict(self, input_data):
-        print(input_data)
+        # Prompt is constructed from sample input data, and is used to make predictions based on candidate's age, capability and associate level
         invoke_prompt = "List some recommmend courses for a " + str(input_data["age"]) + " year old " + input_data["level"] + " associate who has some basic " + input_data["capability"] + " qualifications"
         prediction_data = self.agent_executor.invoke(
             {
