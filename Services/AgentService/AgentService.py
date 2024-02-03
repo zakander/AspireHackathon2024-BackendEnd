@@ -22,7 +22,6 @@ class AgentService:
         self.agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True, handle_parsing_errors=True)
     
     def predict(self, input_data):
-        print("INPUT DATA BELOW")
         print(input_data)
         invoke_prompt = "List some recommmend courses for a " + str(input_data["age"]) + " year old " + input_data["level"] + " associate who has some basic " + input_data["capability"] + " qualifications"
         prediction_data = self.agent_executor.invoke(
