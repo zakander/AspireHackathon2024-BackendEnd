@@ -1,0 +1,26 @@
+[
+    {
+        "name": "David Costa",
+        "age": 27,
+        "capability": "Engineering",
+        "level": "Level 1"
+    },
+    {
+        "name": "Olivia Smith",
+        "age": 24,
+        "capability": "Strategy",
+        "level": "Junior Associate"
+    },
+    {
+        "name": "Nathan Brown",
+        "age": 28,
+        "capability": "Experience",
+        "level": "Level 2"
+    },
+    {
+        "name": "Cynthia Gan",
+        "age": 26,
+        "capability": "Product",
+        "level": "Level 1"
+    }
+]

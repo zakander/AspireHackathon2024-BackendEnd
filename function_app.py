@@ -1,4 +1,5 @@
 from Services.Controller import Controller
+import json
 import azure.functions as func
 import logging
 
@@ -6,9 +7,15 @@ app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 
 controller = Controller()
 
+with open('SampleData/SampleData.json', 'r') as f:
+    data = json.load(f)
+    print(data)
+
 @app.route(route="RunPrediction")
 def RunPrediction(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
+    for person in data:
+        controller.AgentService.predict(person)
 
     name = req.params.get('name')
     if not name:
