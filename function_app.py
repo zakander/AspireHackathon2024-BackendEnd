@@ -1,7 +1,10 @@
+from Services.Controller import Controller
 import azure.functions as func
 import logging
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+
+controller = Controller()
 
 @app.route(route="RunPrediction")
 def RunPrediction(req: func.HttpRequest) -> func.HttpResponse:
